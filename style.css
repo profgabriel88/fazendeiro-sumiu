@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: "Pixelify Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+.tabuleiro {
+  position: relative;
+}
+
+.quadro {
+  border: 1px solid black;
+  position: absolute;
+}
+
+.robo {
+  font-size: 72px;
+  text-align: center;
+  align-content: center;
+}
