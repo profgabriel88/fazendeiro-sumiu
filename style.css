@@ -9,8 +9,21 @@ body {
 
 
 
-.tabuleiro {
+#tabuleiro {
   position: relative;
+  width: 600px;
+}
+
+#texto {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  textarea {
+    height: 90%;
+  }
+  button {
+    height: 10%;
+  }
 }
 
 .quadro {

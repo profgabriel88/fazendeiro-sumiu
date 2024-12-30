@@ -1,11 +1,10 @@
 window.addEventListener('load', () => {
-    document.getElementById("loader").style.display="none";
     const altura = 600;
     const largura = 800;
     const res = 150;
     const linhas = altura / res;
     const colunas = largura / res;
-    const tab = new Tabuleiro(linhas, res);
+    const tab = new Tabuleiro(4);
     tab.desenha();
 
     const raio = res;

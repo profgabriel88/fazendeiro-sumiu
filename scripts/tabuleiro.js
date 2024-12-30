@@ -1,9 +1,9 @@
 class Tabuleiro {
-    constructor (linhas, tamanhoCasa) {
+    constructor (linhas) {
+        this.tabuleiro = document.getElementById("tabuleiro");
         this.linhas = linhas;
         this.colunas = linhas;
-        this.tamanhoCasa = tamanhoCasa;
-        this.tabuleiro = document.getElementById("tabuleiro");
+        this.tamanhoCasa = this.tabuleiro.clientWidth / linhas;
         this.casas = [];
         this.posAtual = 0;
         this.inicio = true;
