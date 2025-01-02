@@ -42,4 +42,10 @@ class Tabuleiro {
         this.inicio = false;
         this.posAtual = indice;
     }
+
+    planta(cultivar, x, y) {
+        let indice = x + this.largura * y;
+        const divComRobo = this.casas[indice];
+        divComRobo.classList.add(cultivar);
+    }
 }
