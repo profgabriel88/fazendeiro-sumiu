@@ -25,17 +25,11 @@ window.addEventListener('load', () => {
         let i = 0;
         let interval = setInterval(() => {
             if (i < instrucoes.length) {
-                if (instrucoes[i].includes('plantar->')) {
-                    tab.planta(instrucoes[i].replace('plantar->', ''), robo.x, robo.y);
-                }
-                else {
-                    robo.move(instrucoes[i]);
-                    tab.desenhaRobo(robo);
-                }
+                tab.executaInstrucao(instrucoes[i], robo);
             }
             else 
                 clearInterval(interval);
             i++;
-        }, 500);
+        }, 250);
     });
 })

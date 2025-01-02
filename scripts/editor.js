@@ -10,6 +10,9 @@ class Editor {
         texto.forEach((linha, indice) => {
             linha = linha.trimEnd();
             if (linha.indexOf(' ') == 0 || linha == '') return;
+            if (linha.includes('status')) {
+                this.instrucoes.push(linha)
+            }
             if (linha.includes('repete->')) {
                 this.tratarRepete(linha, indice, texto, 0);
                 return;
@@ -35,9 +38,9 @@ class Editor {
             for (let i = indice + 1; i < texto.length; i++) {
                 if (texto[i].indexOf(' ') == 0) {
                     // repete aninhado
+                    let ind = texto[i]?.match(/\s/g)?.length || 0;
                     if (texto[i].includes('repete->')) {
                         // indentação da instrução atual
-                        let ind = texto[i]?.match(/\s/g)?.length || 0;
                         this.tratarRepete(texto[i], i, texto, ind);
                     }
                     // outra instrução, só pega aquilo q está indentado um nível a mais que o repete
@@ -53,11 +56,30 @@ class Editor {
                             var plantar = texto[i].replace(re, '');
                             this.instrucoes.push(plantar);
                         }
+                        else if (texto[i].includes('se->'))
+                            this.tratarSe(texto[i], indice, texto, ind)
+                        else this.instrucoes.push(texto[i]);
                     }
                 }
                 else break;
             }
         }
+    }
+
+    tratarSe(linha, indice, texto, indentacao) {
+        let novaLinha = linha + ':';
+        for (let i = indice; i < texto.length; i++) {
+            if (texto[i]?.match(/\s/g)?.length == indentacao + 1) {
+                let palavras = '';
+                
+                if (texto[i].includes('mover->')) 
+                    palavras = texto[i].replace('mover->', '');
+                else palavras = texto[i];
+
+                novaLinha += palavras;
+            }
+        }
+        this.instrucoes.push(novaLinha);
     }
 
 }
